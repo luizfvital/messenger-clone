@@ -1,5 +1,6 @@
 'use client'
 
+import Input from '@/app/components/inputs/Input'
 import { useCallback, useState } from 'react'
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form'
 
@@ -36,7 +37,7 @@ export default function AuthForm() {
     }
   })
 
-  function onSubmit(data: SubmitHandler<FieldValues>) {
+  const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setIsLoading(true)
 
     if (variant === VARIANT_OPTION.REGISTER) {
@@ -46,9 +47,42 @@ export default function AuthForm() {
     if (variant === VARIANT_OPTION.LOGIN) {
       // NextAuth Signin
     }
+
+  }
+
+  const socialAction = (action: string) => {
+    setIsLoading(true)
+
+    // NextAuth Social Signin
   }
 
   return (
-    <div>AuthForm!</div>
+    <div
+      className='
+        mt-8
+        sm:mx-auto
+        sm:w-full
+        sm:max-w-md
+      '
+    >
+      <div className='
+        bg-white
+        px-4
+        py-8
+        shadow
+        sm:rounded-lg
+        sm:px-10
+      '
+      
+      >
+        <form 
+          className='space-y-6'
+          onSubmit={handleSubmit(onSubmit)}
+        >
+          <Input label="Email"/>
+
+        </form>
+      </div>
+    </div>
   )
 }
