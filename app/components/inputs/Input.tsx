@@ -1,10 +1,7 @@
 'use client'
 
-import {
-  UseFormRegister,
-  FieldErrors,
-  FieldValues
-} from 'react-hook-form'
+import React from 'react'
+import { UseFormRegister, FieldErrors, FieldValues } from 'react-hook-form'
 
 import clsx from 'clsx'
 
@@ -18,36 +15,37 @@ interface InputProps {
   disabled?: boolean
 }
 
-const Input:React.FC<InputProps> = ({
+const Input: React.FC<InputProps> = ({
   label,
   id,
   type,
   required,
   register,
   errors,
-  disabled
+  disabled,
 }) => {
   return (
     <div>
-      <label 
-        className='
+      <label
+        className="
           block
           text-sm
           font-medium
           leading-6
           text-gray-900
-        '
+        "
         htmlFor={id}
       >
         {label}
       </label>
-      <div className='mt-2'>
-        <input 
+      <div className="mt-2">
+        <input
           id={id}
-          type={type} 
+          type={type}
           autoComplete={id}
           disabled={disabled}
-          className={clsx(`
+          className={clsx(
+            `
             form-input
             block
             w-full
@@ -66,9 +64,9 @@ const Input:React.FC<InputProps> = ({
             sm:text-sm
             sm:leading-6`,
             errors[id] && 'focus:ring-rose-500',
-            disabled && 'opacity-50 cursor-default'  
+            disabled && 'opacity-50 cursor-default',
           )}
-          {...register(id, {required})}
+          {...register(id, { required })}
         />
       </div>
     </div>
