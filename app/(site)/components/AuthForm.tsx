@@ -97,7 +97,9 @@ export default function AuthForm() {
           />
 
           <div>
-            <Button>My Button</Button>
+            <Button>
+              {variant === VARIANT_OPTION.LOGIN ? 'Login' : 'Register'}
+            </Button>
           </div>
         </form>
       </div>
